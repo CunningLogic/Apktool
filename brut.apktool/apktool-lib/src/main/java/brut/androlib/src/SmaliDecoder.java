@@ -42,14 +42,11 @@ public class SmaliDecoder {
     }
 
     private void decode() throws AndrolibException {
-        if (mDebug) {	
-            ClassPath.dontLoadClassPath = true;
-        }
         try {
             baksmali.disassembleDexFile(mApkFile.getAbsolutePath(),
                 new DexFile(mApkFile), false, mOutDir.getAbsolutePath(), null,
                 null, null, false, true, true, mBakDeb, false, false, 
-                mDebug ? main.DIFFPRE: 0, false, false, null, false);
+                0, false, false, null, false);
         } catch (IOException ex) {
             throw new AndrolibException(ex);
         }
